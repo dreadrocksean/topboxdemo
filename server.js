@@ -15,7 +15,7 @@ const server = {
     },
 
     urlConfs() {
-        server.app.use(express.static(__dirname + '/public'));
+        server.app.use(express.static(__dirname + '/'));
     }
 };
 

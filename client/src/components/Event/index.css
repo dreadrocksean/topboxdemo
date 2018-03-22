@@ -1,0 +1,49 @@
+.Event {
+    display: flex;
+    flex-direction: row;
+    align-content: top;
+    justify-content: space-between;
+}
+.Event .group {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.Event .date-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 114px;
+    /*width: 30%;*/
+    justify-content: space-between;
+}
+.Event .line {
+    display: flex;
+    width: 10px;
+    height: calc(100%);
+    background: #666;
+    /* position: absolute; */
+    /* top: 75px; */
+    float: right;
+    position: relative;
+    align-self: flex-end;
+    margin-right: calc(37.5px - 5px);
+    z-index: -1;
+}
+.Event .line.red {
+    background: #b00;
+}
+.Event .title {
+    display: flex;
+    align-items: center;
+    margin: 10px 30px;
+}
+.Event .subtitle{
+    color: #c00;
+    font-size: 0.8em;
+    margin: 5px 10px 30px 30px;
+}
+.Event .notes {
+    line-height: 1.9em;
+    margin-left: 30px;
+}

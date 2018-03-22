@@ -1,0 +1,13 @@
+.Evaluation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px 10px 30px;
+    border-top: solid 1px #d4d4d4;
+}
+.Evaluation.red {
+    color: #b00;
+}
+.Evaluation.green {
+    color: #0b0;
+}

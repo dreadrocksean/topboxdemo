@@ -1,0 +1,26 @@
+.Card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    width: 60%;
+}
+.Card.red {
+    background: #b00;
+    color: white;
+}
+.Card .judgement {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.Card .judgement.errorIcon svg {
+    fill: #b00;
+}
+.Card .judgement.successIcon svg {
+    fill: #0b0;
+}
