@@ -26,10 +26,11 @@ class App extends Component {
     }
   }
   render() {
+    const data = this.state.data;
     return (
       <div className="App">
-        {this.state.data.map((event, i) => (
-            <Event data={event} key={i} index={i}/>
+        {data.map((event, i) => (
+            <Event data={event} key={i} index={i} last={data.length === i+1}/>
         ))}
       </div>
     );

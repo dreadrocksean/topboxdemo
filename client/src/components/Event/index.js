@@ -29,7 +29,7 @@ class Event extends Component {
     render() {
 
       const data = this.props.data;
-      const index = this.props.index;
+      const { index } = this.props;
       const { title, icon, time, subtitle, notes, backgroundColor, judgmentIcon, lineColor } = data;
 
       let evaluation = data.evaluation;
@@ -45,6 +45,8 @@ class Event extends Component {
         .lineColors[index] || {})
         .lineColor || '';
 
+      const last = this.props.last ? ' last' : '';
+
       return (
           <div className='Event'>
             <div className='group'>
@@ -52,7 +54,9 @@ class Event extends Component {
                 <Time time={time} />
                 <Icon icon={icon} lineColor={lineColor} />
               </div>
-              <div className={`line ${verticalLineColor}`}></div>
+              { !this.props.last &&
+                <div className={`line ${verticalLineColor}${last}`}></div>
+              }
             </div>
             <Card backgroundColor={backgroundColor}>
                 <h2 className='title'>{title}</h2>
