@@ -5,16 +5,12 @@
     justify-content: space-between;
 }
 .Event .group {
-    display: flex;
-    flex-direction: column;
     width: 30%;
 }
 .Event .date-icon {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 114px;
-    /*width: 30%;*/
     justify-content: space-between;
 }
 .Event .line {
