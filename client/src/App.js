@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCurrLineColor } from './redux';
+import PropTypes from 'prop-types';
+import { setReferences, setLineColors } from './redux';
 
 import './App.css';
 import { fetchData } from './constants/api';
@@ -13,38 +14,63 @@ class App extends Component {
   state = { data: [] };
 
   componentDidMount() {
-    this.fetchData('data1.json');
+    this.doFetchData('data1.json');
     // this.fetchData('data2.json');
   }
 
-  async fetchData(dataName) {
+  async doFetchData(dataName) {
     try {
       const data = await this.props.fetchData(dataName);
+      this.setReferencesStore(data);
+      this.setLineColorsStore(data);
       this.setState({ data });
     } catch (err) {
       console.log('ERROR: ', err);
     }
   }
+
+  setReferencesStore(events) {
+    const references = events.reduce((agg, event) => {
+        if (!event.references || !event.references.length) {return agg;}
+        agg.push({id: event.id, references: event.references});
+        return agg;
+    }, []);
+    this.props.setReferences(references);
+  }
+
+  setLineColorsStore(events) {
+    const lineColors = events.map(event => ({
+        lineColor: event.lineColor, id: event.id
+    }));
+    this.props.setLineColors(lineColors);
+  }
+
   render() {
     const data = this.state.data;
     return (
       <div className="App">
-        {data.map((event, i) => (
-            <Event data={event} key={i} index={i} last={data.length === i+1}/>
-        ))}
+        {data.map((event, i) => {
+            return (
+                <Event
+                    data={event}
+                    key={i}
+                    index={i}
+                    last={data.length === i+1}
+                />
+            )
+        })}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  lineColor: state.lineColor,
-});
+Event.propTypes = {
+  currLineColor: PropTypes.object,
+}
 
-const mapDispatchToProps = { setCurrLineColor };
+const mapDispatchToProps = { setReferences, setLineColors };
 
 const AppContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null, mapDispatchToProps
 )(App);
 export default AppContainer;

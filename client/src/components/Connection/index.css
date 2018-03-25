@@ -1,0 +1,33 @@
+.Connection {
+    display: flex;
+    flex-direction: column;
+    min-width: 30px;
+    position: relative;
+}
+
+.Connection .top {
+    display: flex;
+    flex: 6;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+}
+
+.Connection .middle {
+    display: flex;
+    background: white;
+    flex: 1;
+    max-height: 6px;
+}
+
+.Connection .bottom {
+    display: flex;
+    flex: 6;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+}
+
+.Connection .gap {
+    height: 50px;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+}
