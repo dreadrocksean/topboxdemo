@@ -2,32 +2,48 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Channel from '../Channel';
 import './index.css';
 
 class Connection extends Component {
-    // const channelDirection =
+  // const channelDirection =
 
-    render() {
-        const { id, channels } = this.props;
-        if (!channels) { return null; }
-        const found = this.props.channels.find(channel => {
-            return channel.indexOf(id);
-        });
-        const index = channels.indexOf(found);
-        const isNode = channels.indexOf(id) > -1;
-        return (
-            <div className='Connection'>
-                <div className='top'></div>
-                {(isNode) && <div className='middle'></div>}
-                <div className='bottom'></div>
-                <div className='gap'></div>
-            </div>
-        );
-    }
+  renderChannels() {
+    const { id, channels } = this.props;
+    // if (!theseChannels.length) return null;
+    // return theseChannels.map(ch => {
+    return channels.map((ch, i) => {
+      const flatChannels= [].concat(...channels);
+      const found = flatChannels.find(item => {
+        return item.id === id && item.channelIndex === i;
+      }) || {};
+      const connectionType = typeof found.connectionType === 'undefined'
+        ? -1
+        : found.connectionType;
+
+      return (
+        <div key={i} className='ChannelWrapper'>
+          <Channel
+            key={i}
+            channelIndex={i}
+            connectionType={connectionType}
+          />
+        </div>
+      )
+    });
+  }
+
+  render() {
+    return (
+      <div className='Connection'>
+        {this.renderChannels()}
+      </div>
+    );
+  }
 }
 
 Connection.propTypes = {
-    id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -39,4 +55,3 @@ const AppContainer = connect(
 )(Connection);
 
 export default AppContainer;
-

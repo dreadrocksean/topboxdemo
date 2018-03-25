@@ -1,0 +1,38 @@
+.Channel {
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    position: relative;
+    height: 100%;
+}
+
+.Channel .top {
+    display: flex;
+    flex: 6;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+    /*background: red;*/
+}
+
+.Channel .middle {
+    display: flex;
+    background: white;
+    flex: 1;
+    max-height: 6px;
+    /*background: blue;*/
+}
+
+.Channel .bottom {
+    display: flex;
+    flex: 6;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+    /*background: green;*/
+}
+
+.Channel .gap {
+    height: 50px;
+    box-sizing: border-box;
+    border-right: solid 6px white;
+    /*background: yellow;*/
+}

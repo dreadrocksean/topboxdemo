@@ -9,7 +9,31 @@ const initState = {
 };
 
 // processors
-const processChannels = references => {
+const processReferences = references => {
+  const connections = referencesToUniqueConnections(references);
+  return connectionsToChannels(connections);
+};
+
+const getRange = conn => {
+  conn = conn.sort();
+  return [...Array(conn[1]-conn[0]+1).keys()].map(n=>n+conn[0]);
+};
+
+const connectionsToChannels = connections => {
+  return connections.map((conn, i) => {
+    const range = getRange(conn);
+    return range.map((id, j) => (
+      {
+        id,
+        channelIndex: i,
+        connectionType: j===0 ? 1 : (j+1===range.length ? 0 : 2)
+      }
+    ))
+  });
+
+};
+
+const referencesToUniqueConnections = references => {
   references = [
     {id:2, references:[5,6]},
     {id:5, references:[2]},
@@ -18,7 +42,7 @@ const processChannels = references => {
   const channels = references.reduce((sum, ref) => {
     ref.references.forEach(item => {
       const found = sum.find(channel => (
-        channel.indexOf(ref.id) > -1 ||
+        channel.indexOf(ref.id) > -1 &&
         channel.indexOf(item) > -1
       ));
       if (!found) {
@@ -37,8 +61,7 @@ const processChannels = references => {
 const processLineColors = lineColors => {
   const colors = lineColors.map( lc => lc.lineColor );
   return lineColors.map((lc, i) => {
-    if (i === 0) { return lc; }
-    if (colors[i]) { return lc; }
+    if (i === 0 || colors[i]) { return lc; }
     colors[i] = colors[i-1];
     return { ...lc, lineColor: colors[i] };
   });
@@ -58,8 +81,7 @@ export const setLineColors = lineColors => ({
 export const lineColors = (state = {}, action) => {
   switch (action.type) {
     case 'SET_LINECOLORS':
-      const lineColors = processLineColors(action.lineColors);
-      return lineColors;
+      return processLineColors(action.lineColors);
     default:
       return state;
   }
@@ -67,8 +89,7 @@ export const lineColors = (state = {}, action) => {
 export const channels = (state = {}, action) => {
   switch (action.type) {
     case 'SET_REFERENCES':
-      const channels = processChannels(action.references);
-      return channels;
+      return processReferences(action.references);
     default:
       return state;
   }
@@ -79,15 +100,8 @@ export const reducers = combineReducers({
 });
 
 // store.js
-export const configureStore = (initialState = {}) => (
-  createStore(reducers, initialState)
+export const configureStore = (state = initState) => (
+  createStore(reducers, state)
 );
 
-// const mainReducer = (state = {}, action) => {
-//   return {
-//     lineColors: lineColor(state.lineColors, action),
-//     channels: channels(state.channels, action)
-//   };
-// };
-// export const store = createStore(mainReducer);
 export const store = configureStore();

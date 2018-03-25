@@ -14,13 +14,13 @@ const Icon = ({ icon, lineColor }) => {
     return (
         <div className={`Icon${type}`}>
             {icon &&
-                <img src={`http://localhost:8077/artwork/svgs/${lcIcon}.svg`} />
+                <img src={`http://localhost:8077/artwork/svgs/${lcIcon}.svg`} alt={type} />
             }
         </div>
     );
 };
 
-Event.propTypes = {
+Icon.propTypes = {
   icon: PropTypes.string,
 }
 

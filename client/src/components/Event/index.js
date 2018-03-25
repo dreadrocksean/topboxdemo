@@ -11,17 +11,13 @@ import Connection from '../Connection/';
 
 class Event extends Component {
 
-    constructor(props) {
-      super(props);
-    }
-
     render() {
 
       const data = this.props.data;
       const { index } = this.props;
       const { title, icon, time, subtitle, notes,
         backgroundColor, judgmentIcon, lineColor,
-        id, references
+        id
       } = data;
 
       let evaluation = data.evaluation;
