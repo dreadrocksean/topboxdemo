@@ -16,7 +16,10 @@ class Connection extends Component {
         return item.id === id && item.channelIndex === i;
       }) || {};
       let channelIndices = (
-        flatChannels.filter(item => item.id === id)
+        flatChannels.filter(item =>
+          item.id === id
+          && item.connectionType < 2 && item.connectionType > -1
+        )
         .map(fc => fc.channelIndex)
       );
       channelIndices = channelIndices.length ? channelIndices : [-1];

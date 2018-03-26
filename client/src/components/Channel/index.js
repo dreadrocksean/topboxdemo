@@ -12,7 +12,7 @@ class Channel extends React.Component {
     return (
       <div className='Channel'>
         {<div className='top' style={{opacity: +(show && connectionType !== 1)}}></div>}
-        {(showMiddle && connectionType < 2) && <div className='middle'></div>}
+        {(showMiddle) && <div className='middle'></div>}
         {<div className='bottom' style={{opacity: +(show && connectionType > 0)}}></div>}
         {<div className='gap' style={{opacity: +(show && connectionType > 0)}}></div>}
       </div>

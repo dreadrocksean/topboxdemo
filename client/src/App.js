@@ -15,7 +15,7 @@ class App extends Component {
 
   componentDidMount() {
     this.doFetchData('data1.json');
-    // this.fetchData('data2.json');
+    // this.doFetchData('data2.json');
   }
 
   async doFetchData(dataName) {
