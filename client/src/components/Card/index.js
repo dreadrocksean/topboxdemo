@@ -5,7 +5,6 @@ import './index.css';
 
 const Card = ( props ) => {
     const { backgroundColor } = props;
-    // const classNames = require('classnames');
 
     const classes = classNames({
       'red': backgroundColor === 'red',

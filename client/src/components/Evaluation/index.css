@@ -11,3 +11,17 @@
 .Evaluation.green {
     color: #0b0;
 }
+.Evaluation .checkbox {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+.Evaluation .checkbox svg{
+    fill: #000;
+}
+.Evaluation.red .checkbox svg{
+    fill: #b00;
+}
+.Evaluation div {
+    display: flex;
+}

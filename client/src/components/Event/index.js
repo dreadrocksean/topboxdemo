@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 
 import './index.css';
 import Icon from '../Icon/';
-import SuccessIcon from '../Icons/SuccessIcon';
 import Time from '../Time/';
 import Card from '../Card/';
 import Evaluation from '../Evaluation/';
 import Connection from '../Connection/';
+
 
 class Event extends Component {
 
@@ -53,10 +53,9 @@ class Event extends Component {
                 {subtitle && <div className='subtitle'>{subtitle}</div>}
                 {notes && <div className='notes'>{notes}</div>}
                 {evaluation && <Evaluation data={evaluation}/>}
-                {/*<SuccessIcon />*/}
                 <div className={`judgement ${judgement}`}>
                   {judgmentIcon &&
-                    <img src={`http://localhost:8077/artwork/svgs/${judgement}.svg`} />
+                    <img src={`http://localhost:8077/artwork/svgs/${judgement}.svg`} alt={judgement} />
                   }
                 </div>
 
