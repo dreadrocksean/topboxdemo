@@ -37,7 +37,7 @@ const referencesToUniqueConnections = references => {
   references = [
     {id:2, references:[5,6]},
     {id:5, references:[2]},
-    {id:3, references:[7,2]},
+    {id:3, references:[7,1]},
   ];
   const channels = references.reduce((sum, ref) => {
     ref.references.forEach(item => {

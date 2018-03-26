@@ -1,6 +1,5 @@
 .Connection {
     display: flex;
     flex-direction: row;
-    /*min-width: 30px;*/
     position: relative;
 }

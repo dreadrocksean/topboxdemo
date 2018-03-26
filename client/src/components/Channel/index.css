@@ -1,7 +1,7 @@
 .Channel {
     display: flex;
     flex-direction: column;
-    width: 20px;
+    width: 20px; /* Adjust to taste */
     position: relative;
     height: 100%;
 }

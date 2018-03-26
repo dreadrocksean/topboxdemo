@@ -10,6 +10,21 @@
     width: 60%;
     min-width: 200px;
 }
+.Card:before {
+    content: '';
+    position: absolute;
+    top: calc(75px / 2);
+    transform: translateY(-50%);
+    left: -9px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 9px 10px 0;
+    border-color: transparent #fff transparent transparent;
+}
+.Card.red:before {
+    border-color: transparent #b00 transparent transparent;
+}
 .Card.red {
     background: #b00;
     color: white;

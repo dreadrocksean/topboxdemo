@@ -6,7 +6,6 @@ import Channel from '../Channel';
 import './index.css';
 
 class Connection extends Component {
-  // const channelDirection =
 
   renderChannels() {
     const { id, channels } = this.props;
