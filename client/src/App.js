@@ -65,7 +65,8 @@ class App extends Component {
 }
 
 Event.propTypes = {
-  currLineColor: PropTypes.object,
+  setLineColors: PropTypes.func,
+  setReferences: PropTypes.func,
 }
 
 const mapDispatchToProps = { setReferences, setLineColors };

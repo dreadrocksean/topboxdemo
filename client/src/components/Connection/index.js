@@ -50,6 +50,7 @@ class Connection extends Component {
 
 Connection.propTypes = {
   id: PropTypes.number.isRequired,
+  channels: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

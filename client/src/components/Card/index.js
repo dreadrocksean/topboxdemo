@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './index.css';
 
 const Card = ( props ) => {
@@ -18,9 +18,9 @@ const Card = ( props ) => {
     );
 };
 
-// Event.propTypes = {
-//   icon: PropTypes.string,
-// }
+Event.propTypes = {
+  backgroundColor: PropTypes.string,
+}
 
 export default Card;
 

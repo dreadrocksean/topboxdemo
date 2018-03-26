@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import './index.css';
 import Icon from '../Icon/';
+import SuccessIcon from '../Icons/SuccessIcon';
 import Time from '../Time/';
 import Card from '../Card/';
 import Evaluation from '../Evaluation/';
@@ -52,11 +53,10 @@ class Event extends Component {
                 {subtitle && <div className='subtitle'>{subtitle}</div>}
                 {notes && <div className='notes'>{notes}</div>}
                 {evaluation && <Evaluation data={evaluation}/>}
+                {/*<SuccessIcon />*/}
                 <div className={`judgement ${judgement}`}>
                   {judgmentIcon &&
-                    <svg viewBox="0 0 16 16">
-                       <use xlinkHref={`http://localhost:8077/artwork/svgs/${judgement}.svg`} />
-                    </svg>
+                    <img src={`http://localhost:8077/artwork/svgs/${judgement}.svg`} />
                   }
                 </div>
 
