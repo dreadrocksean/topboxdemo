@@ -10,13 +10,18 @@ class Connection extends Component {
 
   renderChannels() {
     const { id, channels } = this.props;
-    // if (!theseChannels.length) return null;
-    // return theseChannels.map(ch => {
     return channels.map((ch, i) => {
       const flatChannels= [].concat(...channels);
       const found = flatChannels.find(item => {
         return item.id === id && item.channelIndex === i;
       }) || {};
+      let channelIndices = (
+        flatChannels.filter(item => item.id === id)
+        .map(fc => fc.channelIndex)
+      );
+      channelIndices = channelIndices.length ? channelIndices : [-1];
+      const highestChannel = Math.max(...channelIndices);
+
       const connectionType = typeof found.connectionType === 'undefined'
         ? -1
         : found.connectionType;
@@ -24,9 +29,8 @@ class Connection extends Component {
       return (
         <div key={i} className='ChannelWrapper'>
           <Channel
-            key={i}
-            channelIndex={i}
             connectionType={connectionType}
+            showMiddle={highestChannel > i - 1}
           />
         </div>
       )
